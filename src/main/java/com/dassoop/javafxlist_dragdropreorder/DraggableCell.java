@@ -78,13 +78,17 @@ public class DraggableCell extends ListCell<String>
                 int destination = items.indexOf(getItem());
 
                 //swap origin and destination values
-//				items.set(origin, getItem());
-//				items.set(destination, db.getString());
-
+                if(MainController.mode == "swap")
+                {
+                    items.set(origin, getItem());
+                    items.set(destination, db.getString());
+                }
                 //move origin value and reorder list
-                items.remove(origin);
-                items.add(destination, db.getString());
-
+                if(MainController.mode == "reorder")
+                {
+                    items.remove(origin);
+                    items.add(destination, db.getString());
+                }
                 success = true;
             }
             event.setDropCompleted(success);

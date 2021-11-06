@@ -2,6 +2,7 @@ package com.dassoop.javafxlist_dragdropreorder;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 
 import java.net.URL;
@@ -13,6 +14,10 @@ public class MainController implements Initializable
 {
     @FXML
     ListView<String> list = new ListView<>();
+    @FXML
+    Label lblMode = new Label();
+
+    static String mode = "reorder";
 
     //Constructor
     public MainController()
@@ -48,5 +53,19 @@ public class MainController implements Initializable
         List<String> newList = list.getItems();
         System.out.println(newList.toString());
         return newList;
+    }
+
+    public void changeMode()
+    {
+        if(mode == "reorder")
+        {
+            mode = "swap";
+        }
+        else
+        {
+            mode = "reorder";
+        }
+        String modeStr = mode.substring(0, 1).toUpperCase() + mode.substring(1);
+        lblMode.setText(modeStr);
     }
 }
